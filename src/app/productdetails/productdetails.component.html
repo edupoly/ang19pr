@@ -1,0 +1,33 @@
+<div class="d-flex">
+    <div class="w-50 p-5">
+        <img class="img-fluid" [src]="product.strMealThumb" alt="">
+    </div>
+    <div class="w-50 p-5">
+        <h1>{{product.strMeal}}</h1>
+        <h2>Price: {{product.price|currency:'INR'}}</h2>
+        <h3>Category: {{product.category}}</h3>
+        <h4>Servings: {{product.servings}}</h4>
+        <h4>Preperation Time: {{product['prep_time_minutes']}} min</h4>
+        <h4>Cooking Time : {{product['cook_time_minutes']}} min</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Quantity</td>
+                    <td>Unit</td>
+                    <td>Note</td>
+                </tr>
+            </thead>
+            <tbody>
+                @for(ing of product.ingredients;track ing;let i = $index){
+                    <tr>
+                        <td>name:{{ing.name}}</td>
+                        <td>quantity:{{ing.quantity}}</td>
+                        <td>unit:{{ing.unit}}</td>
+                        <td>note:{{ing.note}}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="card m-1" style="width: 14rem;">
+    <img [src]="product()['strMealThumb']" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{product()['strMeal']}}</h5>
+        <p class="card-text">
+            Price:{{product()['price']}}
+        </p>
+        <div class="d-flex justify-content-between">
+            @if(isInCart()){
+                <button href="#" class="btn btn-secondary">Go To Cart</button>
+            }
+            @else{
+                <button href="#" class="btn btn-primary" (click)="addToCart(product())">Add To Cart</button>
+            }
+            <a [routerLink]='["/about",product().id]' class="btn btn-info">info</a>
+
+        </div>
+    </div>
+</div>
