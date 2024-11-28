@@ -1,10 +1,16 @@
 <li [class]="todo().status?'text-decoration-line-through':'fs-bold'">
-    {{todo()?.title}}
-    @if(todo()?.status){
-      <button class="btn btn-success m-1" (click)="toggleTodoItem(i())">Done</button>
-    }
-    @else{
-      <button class="btn btn-warning m-1" (click)="toggleTodoItem(i())">Undo</button>
-    }
-    <button class="btn btn-danger m-1" (click)="deleteTodoItem(i())">Delete</button>
+    <div class="d-flex justify-content-between align-items-center p-2">
+      <div>
+        {{todo()?.title}}
+      </div>
+      <div>
+        @if(todo()?.status){
+          <button class="btn btn-warning m-1" (click)="toggleTodoItem(i())">Undo</button>
+        }
+        @else{
+          <button class="btn btn-primary m-1" (click)="toggleTodoItem(i())">Done</button>
+        }
+        <button class="btn btn-danger m-1" (click)="deleteTodoItem(i())">Delete</button>
+      </div>
+    </div>
 </li>
