@@ -1,61 +1,57 @@
-import { JsonPipe, SlicePipe, UpperCasePipe } from '@angular/common';
-import { Component, model, signal } from '@angular/core';
+
+import { Component,signal,model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TodofilterPipe } from './todofilter.pipe';
+import { TfilterPipe } from './tfilter.pipe';
 import { TodoComponent } from './todo/todo.component';
+
 
 @Component({
   selector: 'app-root',
-  imports:[FormsModule,UpperCasePipe,TodofilterPipe,SlicePipe,JsonPipe,TodoComponent],
+  imports:[FormsModule,TfilterPipe,TodoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'ang19pr';
-  count=signal(0);
-  newtodo=model('')
-  tfilter=model('all')
-  // todofilter = new TodofilterPipe();
+  fil=model('all')
   todos=signal([
     {
-      title:'get home',
-      status:false
-    },
-    {
-      title:'pay emi',
-      status:false
-    },
-    {
-      title:'pay rent',
+      title:"get car",
       status:true
     },
     {
-      title:'just try',
+      title:"goto gym",
+      status:false
+    },
+    {
+      title:"pay emi",
+      status:true
+    },
+    {
+      title:"pay rent",
       status:false
     }
-  ]);
-  get alltodos(){
-    return this.todos();
-  }
+    
+  ])
+  newtodo = model('');
   addTodo(){
-    this.todos.update(todos=>[...todos,{title:this.newtodo(),status:false}])
+    this.todos.update(todo=>{
+      return [...this.todos(),{title:this.newtodo(),status:false}]
+    })
   }
-  inc(){
-    this.count.update(count=>count+1)
+  deleteTodo(index:any){
+    this.todos.update((todos)=>{
+      return todos.filter((todo,i)=>i!==index)
+    })
   }
-  dec(){
-    this.count.update(count=>count-1)
+  toggleStatus(index:any){
+    this.todos.update((todos)=>{
+      return todos.map((todo,i)=>{
+        if(i===index){
+          todo.status=!todo.status;
+        }
+        return todo;
+      })
+    })
   }
-  toggleTodo(index:number){
-    this.todos.update(todos=>todos.map((todo,i)=>{
-      i===index && (todo.status=!todo.status);
-      return todo
-    }))
-  }
-  deleteTodo(index:number){
-    this.todos.update(todos=>todos.filter((todo,i)=>i!==index))
-  }
-  ngOnInit(){
-    console.log(this.todos())
-  }
+
 }

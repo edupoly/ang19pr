@@ -1,16 +1,15 @@
-<div class="container d-flex align-items-center flex-column mt-5">
-  <div class="d-flex align-items-center">
-    <input type="text" [(ngModel)]="newtodo" class="control">
-    <button (click)="addTodo()" class="btn btn-success p-1 m-2">Add Todo</button>
-  </div>
-  <div class="d-flex justify-content-space-evenly p-3">
-    <input type="radio" name="filt" value="all" [(ngModel)]="tfilter">:All &nbsp;&nbsp;
-    <input type="radio" name="filt" value="done" [(ngModel)]="tfilter">:DONE &nbsp;&nbsp;
-    <input type="radio" name="filt" value="notdone" [(ngModel)]="tfilter">:NotDONE &nbsp;&nbsp;
+<h1>Edupoly for Quality Trainings</h1>
+<div class="p-3">
+  <input type="text" [(ngModel)]="newtodo">
+  <button (click)="addTodo()">Add Todo</button>
+  <div>
+    <input type="radio" [(ngModel)]="fil" value="all">:All
+    <input type="radio" [(ngModel)]="fil" value="done">:Done
+    <input type="radio" [(ngModel)]="fil" value="notdone">:NotDONE
   </div>
   <ul>
-    @for (todo of alltodos|todofilter:tfilter(); track todo;let i=$index) {
-      <app-todo [todo]="todo" [i]="i" (toggleTodo)="toggleTodo(i)" (deleteTodo)="deleteTodo(i)"></app-todo>
+    @for(todo of todos()|tfilter:fil();track todo;let i = $index){
+      <app-todo [todo]="todo" [i]="i" (deleteTodo)="deleteTodo(i)" (toggleTodo)="toggleStatus(i)"></app-todo>
     }
   </ul>
 </div>

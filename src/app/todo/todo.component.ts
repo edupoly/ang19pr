@@ -1,5 +1,4 @@
-import { Component,Input,input, Output,EventEmitter, output } from '@angular/core';
-
+import { Component,input,output } from '@angular/core';
 
 
 @Component({
@@ -10,13 +9,13 @@ import { Component,Input,input, Output,EventEmitter, output } from '@angular/cor
 })
 export class TodoComponent {
   todo = input<any>()
-  i = input(0);
-  @Output() toggleTodo = new EventEmitter<number>();
-  deleteTodo = output<number>()
-  toggleTodoItem(index:number){
-    this.toggleTodo.emit(index);
-  }
-  deleteTodoItem(index:number){
+  i = input(0)
+  deleteTodo = output<number>();
+  toggleTodo = output<number>();
+  delTodo(index:number){
     this.deleteTodo.emit(index)
+  }
+  toggleStatus(index:number){
+    this.toggleTodo.emit(index)
   }
 }

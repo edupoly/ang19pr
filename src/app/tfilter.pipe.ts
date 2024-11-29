@@ -1,21 +1,21 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'todofilter'
+  name: 'tfilter'
 })
-export class TodofilterPipe implements PipeTransform {
+export class TfilterPipe implements PipeTransform {
 
   transform(value: any[], args: string): any[] {
     if(args==='all'){
       return value
     }
     if(args==='done'){
-      return value.filter(todo=>todo.status);
+      return value.filter((todo)=>todo.status)
     }
     if(args==='notdone'){
-      return value.filter(todo=>!todo.status);
+      return value.filter((todo)=>!todo.status)
     }
-    return value
+    return value;
   }
 
 }
