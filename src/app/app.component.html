@@ -1,16 +1,1 @@
-<div class="container d-flex align-items-center flex-column mt-5">
-  <div class="d-flex align-items-center">
-    <input type="text" [(ngModel)]="newtodo" class="control">
-    <button (click)="addTodo()" class="btn btn-success p-1 m-2">Add Todo</button>
-  </div>
-  <div class="d-flex justify-content-space-evenly p-3">
-    <input type="radio" name="filt" value="all" [(ngModel)]="tfilter">:All &nbsp;&nbsp;
-    <input type="radio" name="filt" value="done" [(ngModel)]="tfilter">:DONE &nbsp;&nbsp;
-    <input type="radio" name="filt" value="notdone" [(ngModel)]="tfilter">:NotDONE &nbsp;&nbsp;
-  </div>
-  <ul>
-    @for (todo of alltodos|todofilter:tfilter(); track todo;let i=$index) {
-      <app-todo [todo]="todo" [i]="i" (toggleTodo)="toggleTodo(i)" (deleteTodo)="deleteTodo(i)"></app-todo>
-    }
-  </ul>
-</div>
+<h1>Just Chill</h1>
