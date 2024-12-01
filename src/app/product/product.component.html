@@ -1,0 +1,9 @@
+
+<div class="card my-2" style="width: 14rem;">
+    <img [src]="item().strMealThumb" class="card-img-top">
+    <div class="card-body">
+      <h5 class="card-title">{{item().strMeal}}</h5>
+      <p class="card-text">{{item().price}}</p>
+      <button href="#" class="btn btn-primary" (click)="addToCart(item())"> + Cart</button>
+    </div>
+</div>

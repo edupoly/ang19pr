@@ -1,0 +1,32 @@
+<h3>Cart</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Count</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(item of cartItems;track item){
+            <tr>
+                <td>{{item.strMeal}}</td>
+                <td>{{item.price}}</td>
+                <td>
+                    <button class="btn btn-warning" (click)="decCartItemCount(item)">-</button>
+                    {{item.count}}
+                    <button class="btn btn-success" (click)="incCartItemCount(item)">+</button>
+                </td>
+                <td>{{item.count*item.price}}</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+                <h2>Total:{{getFinalPrice()}}</h2>
+            </td>
+        </tr>
+    </tfoot>
+</table>

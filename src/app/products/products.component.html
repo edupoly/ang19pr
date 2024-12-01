@@ -1,0 +1,11 @@
+
+<div class="d-flex">
+    <div class="d-flex flex-wrap justify-content-evenly" style="width:60%">
+        @for(item of items;track item){
+            <app-product [item]="item"></app-product>
+        }
+    </div>
+    <div style="width:40%">
+        <app-cart></app-cart>
+    </div>
+</div>
