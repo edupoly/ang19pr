@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CartService } from '../cart.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -8,11 +9,12 @@ import { CartService } from '../cart.service';
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-  cartItems:any=[];
+  cartItems:any;
   constructor(public cs:CartService){
     this.cs.cartEvent.subscribe((allcartitems)=>{
       this.cartItems=allcartitems;
     })
+
   }
   decCartItemCount(item:any){
     this.cs.decItemCount(item);

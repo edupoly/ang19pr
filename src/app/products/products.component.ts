@@ -10,5 +10,5 @@ import { CartComponent } from '../cart/cart.component';
 })
 export class ProductsComponent {
   items=items;
-
+  
 }
